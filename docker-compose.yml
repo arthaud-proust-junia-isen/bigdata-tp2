@@ -5,6 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    platform: linux/amd64
     container_name: namenode
     environment:
       - CLUSTER_NAME=test-cluster
@@ -19,6 +20,7 @@ services:
 
   datanode:
     image: bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8
+    platform: linux/amd64
     container_name: datanode1
     environment:
       - CORE_CONF_fs_defaultFS=hdfs://namenode:8020
@@ -30,6 +32,7 @@ services:
 
   datanode2:
     image: bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8
+    platform: linux/amd64
     container_name: datanode2
     environment:
       - CORE_CONF_fs_defaultFS=hdfs://namenode:8020
@@ -41,6 +44,7 @@ services:
 
   datanode3:
     image: bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8
+    platform: linux/amd64
     container_name: datanode3
     environment:
       - CORE_CONF_fs_defaultFS=hdfs://namenode:8020
@@ -52,6 +56,7 @@ services:
 
   spark-master:
     image: spark:3.5.3-scala2.12-java17-python3-ubuntu
+    platform: linux/amd64
     container_name: spark-master
     hostname: spark-master
     environment:
@@ -69,6 +74,7 @@ services:
 
   spark-worker-1:
     image: spark:3.5.3-scala2.12-java17-python3-ubuntu
+    platform: linux/amd64
     container_name: spark-worker-1
     environment:
       - SPARK_MODE=worker
@@ -84,6 +90,7 @@ services:
 
   spark-worker-2:
     image: spark:3.5.3-scala2.12-java17-python3-ubuntu
+    platform: linux/amd64
     container_name: spark-worker-2
     environment:
       - SPARK_MODE=worker
@@ -99,6 +106,7 @@ services:
 
   jupyter:
     image: jupyter/pyspark-notebook:spark-3.5.0
+    platform: linux/amd64
     container_name: jupyter
     ports:
       - "8888:8888" # Interface Web Jupyter Notebook
